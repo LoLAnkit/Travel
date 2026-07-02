@@ -239,10 +239,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height
 .mega__feature span { font-size: 13px; opacity: .85; margin-top: 4px; }
 
 /* Burger + mobile */
-.nav__burger { display: none; width: 44px; height: 44px; border-radius: 12px; align-items: center; justify-content: center; }
+.nav__burger { display: none; width: 44px; height: 44px; border-radius: 12px; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); padding: 0; }
 .nav__burger span { display: block; width: 22px; height: 2px; background: #fff; position: relative; transition: background .3s; }
 .nav__burger span::before, .nav__burger span::after { content: ""; position: absolute; left: 0; width: 22px; height: 2px; background: #fff; transition: transform .3s var(--ease); }
 .nav__burger span::before { top: -7px; } .nav__burger span::after { top: 7px; }
+.nav.is-scrolled .nav__burger { background: rgba(26,29,28,.04); border-color: rgba(26,29,28,.12); }
 .nav.is-scrolled .nav__burger span, .nav.is-scrolled .nav__burger span::before, .nav.is-scrolled .nav__burger span::after { background: var(--text); }
 
 .mobile-nav { position: fixed; inset: 0; z-index: 1100; background: var(--snow); transform: translateX(100%); transition: transform .5s var(--ease-out); display: flex; flex-direction: column; padding: var(--s-3); overflow-y: auto; }
@@ -693,8 +694,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height
   .certs, .faq-wrap { grid-template-columns: 1fr; gap: var(--s-5); }
 }
 @media (max-width: 860px) {
-  .nav__menu, .nav__phone { display: none; }
-  .nav__burger { display: flex; }
+  .nav__menu, .nav__phone, .nav__right .btn--sm { display: none; }
+  .nav__right { margin-left: auto; gap: 10px; }
+  .nav__burger { display: inline-flex !important; }
   .hero { align-items: center; }
   .hero__inner { padding-top: calc(var(--nav-h) + var(--s-4)); padding-bottom: var(--s-6); }
   .hero__grid { grid-template-columns: 1fr; align-items: stretch; gap: var(--s-5); }
@@ -720,6 +722,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height
   .expeditions__head { flex-direction: column; align-items: flex-start; }
   .hero__badges { position: static; margin-top: var(--s-4); padding-inline: 0; }
   .hero__scroll { display: none; }
+  .hero h1 { font-size: clamp(2.1rem, 8vw, 2.8rem); white-space: nowrap; }
   .hero__metrics { flex-direction: column; }
   .metric-card { min-width: 0; width: 100%; }
   /* Let video cover the full grown hero height on mobile */
